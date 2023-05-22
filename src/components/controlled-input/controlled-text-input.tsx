@@ -2,12 +2,14 @@ import styles from './input.module.scss'
 
 export type ControlledTextInputProps = {
 	label?: string
+	onSubmit?: () => void
 	setValue: (value: string) => void
 	value: string
 }
 
 const ControlledTextInput = ({
 	label,
+	onSubmit,
 	setValue,
 	value,
 }: ControlledTextInputProps) => {
@@ -16,10 +18,16 @@ const ControlledTextInput = ({
 	}
 
 	return (
-		<div className={styles['wrapper']}>
+		<form
+			onSubmit={(e) => {
+				e.preventDefault()
+				if (onSubmit) onSubmit()
+			}}
+			className={styles['wrapper']}
+		>
 			{label && <label>{label}</label>}
 			<input type='text' value={value} onChange={onChange} />
-		</div>
+		</form>
 	)
 }
 

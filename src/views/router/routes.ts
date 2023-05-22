@@ -1,16 +1,18 @@
 import Chat from '../chat/chat'
 import { Home } from '../home'
 
+/* eslint-disable sort-keys */
 export const appRoutes: AppRoutes = {
-	Chat: {
-		component: Chat,
-		label: 'Chat',
-	},
 	Home: {
 		component: Home,
 		label: 'Home',
 	},
+	Chat: {
+		component: Chat,
+		label: 'Chat',
+	},
 }
+/* eslint-enable sort-keys */
 
 export type Route = {
 	label: string

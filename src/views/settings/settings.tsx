@@ -1,14 +1,18 @@
 import { useState } from 'react'
+import { ControlledInput } from '@/components'
+import classnames from 'classnames'
 
 import styles from './settings.module.scss'
-import { ControlledInput } from '@/components'
 
 const Settings = () => {
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 	const [openAiToken, setOpenAiToken] = useState('')
+	const wrapperClassNames = classnames(styles['wrapper'], {
+		[styles['active']]: isSettingsOpen,
+	})
 
 	return (
-		<div className={styles['wrapper']}>
+		<div className={wrapperClassNames}>
 			<button onClick={() => setIsSettingsOpen((prev) => !prev)}>
 				Settings
 			</button>
