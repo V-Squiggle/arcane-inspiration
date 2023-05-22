@@ -7,7 +7,11 @@ import styles from './sendmessage.module.scss'
 const SendMessage = () => {
 	const [message, setMessage] = useState('')
 	const { messageHistory, sendMessage } = useOpenAICompletion()
-	const handleSendMessage = () => sendMessage(message)
+
+	const handleSendMessage = () => {
+		sendMessage(message)
+		setMessage('')
+	}
 
 	return (
 		<>
