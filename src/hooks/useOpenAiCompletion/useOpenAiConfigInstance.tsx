@@ -8,7 +8,7 @@ const useOpenAiConfigInstance = () => {
 	delete configuration.baseOptions.headers['User-Agent']
 
 	const openAi = new OpenAIApi(configuration)
-
+	console.log('MAKE CUM')
 	const getCompletion = async (prompt: string) =>
 		await openAi.createCompletion({
 			max_tokens: 20,
