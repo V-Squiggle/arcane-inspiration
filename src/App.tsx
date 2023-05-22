@@ -1,10 +1,9 @@
-import './App.scss'
-import { Home } from './views'
+import Router from './views/router/router'
 
 function App() {
 	return (
 		<>
-			<Home />
+			<Router />
 		</>
 	)
 }

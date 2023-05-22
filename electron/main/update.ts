@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { app, ipcMain } from 'electron'
 import {
 	type ProgressInfo,
@@ -16,17 +17,17 @@ export function update(win: Electron.BrowserWindow) {
 	// update available
 	autoUpdater.on('update-available', (arg) => {
 		win.webContents.send('update-can-available', {
+			newVersion: arg?.version,
 			update: true,
 			version: app.getVersion(),
-			newVersion: arg?.version,
 		})
 	})
 	// update not available
 	autoUpdater.on('update-not-available', (arg) => {
 		win.webContents.send('update-can-available', {
+			newVersion: arg?.version,
 			update: false,
 			version: app.getVersion(),
-			newVersion: arg?.version,
 		})
 	})
 
@@ -34,15 +35,21 @@ export function update(win: Electron.BrowserWindow) {
 	ipcMain.handle('check-update', async () => {
 		if (!app.isPackaged) {
 			const error = new Error(
-				'The update feature is only available after the package.'
+				'The update feature is only available after the package.',
 			)
-			return { message: error.message, error }
+			return {
+				error,
+				message: error.message,
+			}
 		}
 
 		try {
 			return await autoUpdater.checkForUpdatesAndNotify()
 		} catch (error) {
-			return { message: 'Network error', error }
+			return {
+				error,
+				message: 'Network error',
+			}
 		}
 	})
 
@@ -52,7 +59,10 @@ export function update(win: Electron.BrowserWindow) {
 			(error, progressInfo) => {
 				if (error) {
 					// feedback download error message
-					event.sender.send('update-error', { message: error.message, error })
+					event.sender.send('update-error', {
+						error,
+						message: error.message,
+					})
 				} else {
 					// feedback update progress message
 					event.sender.send('download-progress', progressInfo)
@@ -61,7 +71,7 @@ export function update(win: Electron.BrowserWindow) {
 			() => {
 				// feedback update downloaded message
 				event.sender.send('update-downloaded')
-			}
+			},
 		)
 	})
 
@@ -73,7 +83,7 @@ export function update(win: Electron.BrowserWindow) {
 
 function startDownload(
 	callback: (error: Error | null, info: ProgressInfo | null) => void,
-	complete: (event: UpdateDownloadedEvent) => void
+	complete: (event: UpdateDownloadedEvent) => void,
 ) {
 	autoUpdater.on('download-progress', (info) => callback(null, info))
 	autoUpdater.on('error', (error) => callback(error, null))

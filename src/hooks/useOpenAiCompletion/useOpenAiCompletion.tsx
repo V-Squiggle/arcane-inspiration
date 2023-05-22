@@ -1,15 +1,10 @@
 import { useState } from 'react'
-import { Configuration, CreateCompletionResponse, OpenAIApi } from 'openai'
+import { CreateCompletionResponse } from 'openai'
 import { GptMessage } from './useOpenAiCompletion.types'
-
-const configuration = new Configuration({
-	apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-})
-delete configuration.baseOptions.headers['User-Agent']
-
-const openAi = new OpenAIApi(configuration)
+import useOpenAiConfigInstance from './useOpenAiConfigInstance'
 
 const useOpenAICompletion = () => {
+	const { getCompletion } = useOpenAiConfigInstance()
 	const [completionRequestHistory, setCompletionRequestHistory] = useState<
 		CreateCompletionResponse[]
 	>([])
@@ -35,7 +30,14 @@ const useOpenAICompletion = () => {
 				})
 			})
 			.catch((error) => {
-				throw error
+				if (error?.response?.status === 401) {
+					addMessageToHistory({
+						message: 'Invalid API Key',
+						sender: 'system',
+					})
+				} else {
+					console.log(error.message)
+				}
 			})
 	}
 
@@ -46,13 +48,5 @@ const useOpenAICompletion = () => {
 		sendMessage,
 	}
 }
-
-const getCompletion = async (prompt: string) =>
-	await openAi.createCompletion({
-		max_tokens: 20,
-		model: 'text-davinci-003',
-		prompt: prompt,
-		temperature: 0.5,
-	})
 
 export { useOpenAICompletion }
