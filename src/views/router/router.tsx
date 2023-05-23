@@ -17,7 +17,7 @@ const Router = () => {
 					</button>
 				))}
 			</nav>
-			<main>
+			<main className={styles['main']}>
 				<activeTab.component />
 			</main>
 		</div>

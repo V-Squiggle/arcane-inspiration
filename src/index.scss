@@ -90,10 +90,3 @@ code {
 		background-color: #f9f9f9;
 	}
 }
-
-$content-pad: 2rem;
-main {
-	height: 100%;
-	width: calc(100% - 2 * $content-pad);
-	padding: 0 $content-pad;
-}

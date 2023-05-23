@@ -4,9 +4,12 @@ import React, { useState } from 'react'
 
 import styles from './sendmessage.module.scss'
 
-const SendMessage = () => {
+type Props = {
+	sendMessage: (message: string) => void
+}
+
+const SendMessage = ({ sendMessage }: Props) => {
 	const [message, setMessage] = useState('')
-	const { messageHistory, sendMessage } = useOpenAICompletion()
 
 	const handleSendMessage = () => {
 		sendMessage(message)
@@ -14,24 +17,16 @@ const SendMessage = () => {
 	}
 
 	return (
-		<>
-			<div className={styles['prompt-input--wrapper']}>
-				<ControlledInput
-					type='text'
-					onSubmit={handleSendMessage}
-					value={message}
-					setValue={setMessage}
-				/>
-				<button onClick={handleSendMessage}>Send Message</button>
-			</div>
-			{messageHistory.map((message, i) => (
-				<React.Fragment key={'message-' + i}>
-					<h6>{message.sender}</h6>
-					<p>{message.message}</p>
-				</React.Fragment>
-			))}
-		</>
+		<div className={styles['prompt-input--wrapper']}>
+			<ControlledInput
+				type='text'
+				onSubmit={handleSendMessage}
+				value={message}
+				setValue={setMessage}
+			/>
+			<button onClick={handleSendMessage}>Send Message</button>
+		</div>
 	)
 }
 
-export default SendMessage
+export { SendMessage }
