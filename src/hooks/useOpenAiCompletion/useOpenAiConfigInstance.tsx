@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai'
 
 const useOpenAiConfigInstance = () => {
-	const apiKey = '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'
+	const apiKey = import.meta.env.VITE_OPENAI_API_KEY
 	const configuration = new Configuration({
 		apiKey,
 	})
