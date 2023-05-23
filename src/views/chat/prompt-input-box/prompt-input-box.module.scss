@@ -1,0 +1,17 @@
+.prompt-input {
+	&--wrapper {
+		box-sizing: border-box;
+		margin: 1rem 0;
+		padding: 1rem;
+		border: 1px solid #e0e0e0;
+		border-radius: 1rem;
+		box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+
+		flex-shrink: 0;
+	}
+}
+.textarea {
+	height: 2.5rem;
+	resize: none;
+	width: 100%;
+}
