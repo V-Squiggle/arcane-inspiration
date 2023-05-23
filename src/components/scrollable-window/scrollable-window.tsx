@@ -9,4 +9,4 @@ const ScrollableWindow = ({ children }: Props) => {
 	return <div className={styles['wrapper']}>{children}</div>
 }
 
-export default ScrollableWindow
+export { ScrollableWindow }
