@@ -1,3 +1,3 @@
 export * from './chat'
 export * from './chatHistory'
-export * from './sendMessage'
+export * from './prompt-input-box'

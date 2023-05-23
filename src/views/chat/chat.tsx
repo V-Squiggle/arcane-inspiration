@@ -1,4 +1,4 @@
-import { ChatHistory, SendMessage } from '.'
+import { ChatHistory, PromptInputBox } from '.'
 import { useOpenAICompletion } from '@/hooks'
 
 import styles from './chat.module.scss'
@@ -12,7 +12,7 @@ const Chat = () => {
 			<ScrollableWindow>
 				<ChatHistory messageHistory={messageHistory} />
 			</ScrollableWindow>
-			<SendMessage sendMessage={sendMessage} />
+			<PromptInputBox sendMessage={sendMessage} />
 		</div>
 	)
 }
