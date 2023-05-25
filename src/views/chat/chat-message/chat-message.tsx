@@ -18,7 +18,7 @@ const ChatMessage = ({ message }: Props) => {
 	return (
 		<div className={messageClasses}>
 			<h6 className={styles['sender']}>{getSenderLabel(message.sender)}</h6>
-			<p className={styles['message']}>{message.message}</p>
+			<p className={styles['message']}>{cleanMessage(message.message)}</p>
 		</div>
 	)
 }
@@ -32,6 +32,10 @@ const getSenderLabel = (sender: MessageSender) => {
 		case 'user':
 			return 'You'
 	}
+}
+
+const cleanMessage = (message: string) => {
+	return message.trimStart().trimEnd()
 }
 
 export { ChatMessage }
