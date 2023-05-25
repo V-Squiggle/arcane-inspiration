@@ -35,8 +35,6 @@ const useOpenAICompletion = () => {
 						message: 'Invalid API Key',
 						sender: 'system',
 					})
-				} else {
-					console.log(error.message)
 				}
 			})
 	}
