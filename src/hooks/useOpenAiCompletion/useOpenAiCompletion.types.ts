@@ -1,4 +1,6 @@
 export type GptMessage = {
-	sender: 'user' | 'bot' | 'system'
+	sender: MessageSender
 	message?: string
 }
+
+export type MessageSender = 'user' | 'bot' | 'system'
