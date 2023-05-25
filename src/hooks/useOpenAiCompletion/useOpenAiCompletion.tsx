@@ -18,6 +18,7 @@ const useOpenAICompletion = () => {
 
 	const sendMessage = (message: string) => {
 		addMessageToHistory({
+			isError: false,
 			message: message,
 			sender: 'user',
 		})
@@ -25,6 +26,7 @@ const useOpenAICompletion = () => {
 			.then((response) => {
 				setCompletionRequestHistory((prev) => [...prev, response.data])
 				addMessageToHistory({
+					isError: false,
 					message: response.data.choices[0].text || '',
 					sender: 'bot',
 				})
@@ -32,6 +34,7 @@ const useOpenAICompletion = () => {
 			.catch((error) => {
 				if (error?.response?.status === 401) {
 					addMessageToHistory({
+						isError: true,
 						message: 'Invalid API Key',
 						sender: 'system',
 					})
