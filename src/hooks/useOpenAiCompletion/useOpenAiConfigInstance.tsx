@@ -11,7 +11,7 @@ const useOpenAiConfigInstance = () => {
 
 	const getCompletion = async (prompt: string) =>
 		await openAi.createCompletion({
-			max_tokens: 20,
+			max_tokens: 100,
 			model: 'text-davinci-003',
 			prompt: prompt,
 			temperature: 0.5,

@@ -25,7 +25,7 @@ const useOpenAICompletion = () => {
 			.then((response) => {
 				setCompletionRequestHistory((prev) => [...prev, response.data])
 				addMessageToHistory({
-					message: response.data.choices[0].text,
+					message: response.data.choices[0].text || '',
 					sender: 'bot',
 				})
 			})
