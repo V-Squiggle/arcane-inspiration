@@ -13,6 +13,7 @@ type Props = {
 const ChatMessage = ({ message }: Props) => {
 	const messageClasses = classNames(styles['wrapper'], {
 		[styles['user']]: message.sender === 'user',
+		[styles['error']]: message.isError,
 	})
 
 	return (

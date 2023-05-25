@@ -1,3 +1,5 @@
+@import '@/styles/variables.scss';
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -12,20 +14,34 @@
 	margin-bottom: 5px;
 }
 
+$message-padding: 10px;
 .message {
 	margin: 0;
-	padding: 10px;
+	padding: $message-padding;
 	border-radius: 10px 10px 10px 0px;
 	background-color: #696969;
 	max-width: min(95%, 35rem);
 	white-space: pre-wrap;
 }
+
 .user {
 	&.wrapper {
 		align-items: flex-end;
 	}
+
 	.message {
 		border-radius: 10px 10px 0px 10px;
 		background-color: #155c00;
+	}
+}
+
+$error-border-width: 3px;
+.error {
+	.sender {
+		color: $error-color;
+	}
+	.message {
+		border: $error-border-width solid $error-color;
+		padding: $message-padding - $error-border-width;
 	}
 }
