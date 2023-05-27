@@ -21,7 +21,8 @@
 	},
 	"dependencies": {
 		"classnames": "^2.3.2",
-		"openai": "^3.2.1"
+		"openai": "^3.2.1",
+		"react-icons": "^4.8.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.32.0",

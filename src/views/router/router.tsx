@@ -3,13 +3,15 @@ import { Route, appRoutes } from './routes'
 
 import styles from './router.module.scss'
 import Settings from '../settings/settings'
+import Navbar from '@/components/navbar/navbar'
 
 const Router = () => {
 	const [activeTab, setActiveTab] = useState<Route>(appRoutes.Home)
 
 	return (
 		<div className={styles['wrapper']}>
-			<Settings />
+			<Navbar />
+			{/* <Settings />
 			<nav className={styles['navigation-tab--wrapper']}>
 				{Object.values(appRoutes).map((route) => (
 					<button key={route.label} onClick={() => setActiveTab(route)}>
@@ -19,7 +21,7 @@ const Router = () => {
 			</nav>
 			<main className={styles['main']}>
 				<activeTab.component />
-			</main>
+			</main> */}
 		</div>
 	)
 }
