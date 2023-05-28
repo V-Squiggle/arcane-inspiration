@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import styles from './navbar.module.scss';
 import { AppRoutes, Route, appRoutes } from '../../views/router/routes'
+import classNames from 'classnames';
 
 type NavbarProps = {
     setActiveTab: Dispatch<SetStateAction<Route>>,
@@ -14,13 +15,13 @@ type NavbarProps = {
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const openSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-    
+    const betterNavClass = classNames(styles['nav-menu'], {[styles.active]: isSidebarOpen})
     return (
         <>
             <div className={styles.navbar}>
                 <FaIcons.FaBars onClick={openSidebar} />
             </div>
-            <nav className={isSidebarOpen ? styles['nav-menu'] + ' ' + styles.active : styles['nav-menu']}>
+            <nav className={betterNavClass}>
                 <ul className={styles['nav-menu-items']} onClick={openSidebar}>
                     <li className={styles['navbar-toggle']}>
                         <AiIcons.AiOutlineClose />
