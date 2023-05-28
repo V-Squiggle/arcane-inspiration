@@ -10,7 +10,7 @@ const Router = () => {
 
 	return (
 		<div className={styles['wrapper']}>
-			<Navbar />
+            <Navbar setActiveTab={setActiveTab} appRoutes={appRoutes} />			
 			{/* <Settings />
 			<nav className={styles['navigation-tab--wrapper']}>
 				{Object.values(appRoutes).map((route) => (
@@ -18,10 +18,10 @@ const Router = () => {
 						{route.label}
 					</button>
 				))}
-			</nav>
+			</nav> */
 			<main className={styles['main']}>
 				<activeTab.component />
-			</main> */}
+			</main>}
 		</div>
 	)
 }

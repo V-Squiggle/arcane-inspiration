@@ -1,5 +1,6 @@
 import Chat from '../chat/chat'
 import { Home } from '../home'
+import Settings from '../settings/settings'
 
 /* eslint-disable sort-keys */
 export const appRoutes: AppRoutes = {
@@ -11,6 +12,10 @@ export const appRoutes: AppRoutes = {
 		component: Chat,
 		label: 'Chat',
 	},
+	Settings: {
+		component: Settings,
+		label:  'Settings',
+	}
 }
 /* eslint-enable sort-keys */
 
@@ -20,5 +25,5 @@ export type Route = {
 }
 
 export type AppRoutes = {
-	[key in 'Home' | 'Chat']: Route
+	[key in 'Home' | 'Chat' | 'Settings']: Route
 }

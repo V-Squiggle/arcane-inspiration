@@ -13,10 +13,7 @@ const Settings = () => {
 
 	return (
 		<div className={wrapperClassNames}>
-			<button onClick={() => setIsSettingsOpen((prev) => !prev)}>
-				Settings
-			</button>
-			{isSettingsOpen && (
+			{(
 				<div>
 					<h1>Settings</h1>
 					<ControlledInput
