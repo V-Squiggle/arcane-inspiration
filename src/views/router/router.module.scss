@@ -13,14 +13,17 @@ $nav-tab-height: 5rem;
 	width: 100vw;
 
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: flex-start;
-	align-items: flex-start;
+	align-items: stretch;
 }
 
 $content-pad: 2rem;
 .main {
-	height: calc(100% - $nav-tab-height);
 	width: calc(100% - 2 * $content-pad);
 	padding: 0 $content-pad;
+}
+
+.navbar {
+	width: 120px;
 }

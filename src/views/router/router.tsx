@@ -9,7 +9,9 @@ const Router = () => {
 
 	return (
 		<div className={styles['wrapper']}>
-			<Navbar setActiveTab={setActiveTab} appRoutes={appRoutes} />
+			<div className={styles['navbar']}>
+				<Navbar setActiveTab={setActiveTab} appRoutes={appRoutes} />
+			</div>
 			<main className={styles['main']}>
 				<activeTab.component />
 			</main>
