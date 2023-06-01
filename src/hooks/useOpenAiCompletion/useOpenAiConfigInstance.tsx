@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from 'openai'
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 
 const useOpenAiConfigInstance = () => {
 	const apiKey = import.meta.env.VITE_OPENAI_API_KEY
@@ -17,7 +17,23 @@ const useOpenAiConfigInstance = () => {
 			temperature: 0.5,
 		})
 
-	return { getCompletion }
+	const getChatCompletion = async (
+		history: ChatCompletionRequestMessage[],
+		prompt: string,
+	) =>
+		await openAi.createChatCompletion({
+			messages: [
+				...history,
+				{
+					content: prompt,
+					name: 'User',
+					role: 'user',
+				},
+			],
+			model: 'gpt-3.5-turbo',
+		})
+
+	return { getChatCompletion, getCompletion }
 }
 
 export default useOpenAiConfigInstance
