@@ -4,4 +4,13 @@ export type GptMessage = {
 	isError: boolean
 }
 
-export type MessageSender = 'user' | 'bot' | 'system'
+export type MessageSender = 'user' | 'bot' | 'system' | 'error'
+
+export type GptErrorResponse = {
+	error: {
+		message: string
+		type: string
+		param: string
+		code?: number
+	}
+}

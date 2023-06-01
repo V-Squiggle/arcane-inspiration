@@ -5,13 +5,13 @@ import { PromptInputBox } from './prompt-input-box'
 import styles from './chat.module.scss'
 
 const Chat = () => {
-	const { messageHistory, sendMessage } = useOpenAICompletion()
+	const { messageHistory, sendChatMessage } = useOpenAICompletion()
 
 	return (
 		<div className={styles['wrapper']}>
 			<div className={styles['container']}>
 				<ChatHistory messageHistory={messageHistory} />
-				<PromptInputBox sendMessage={sendMessage} />
+				<PromptInputBox sendMessage={sendChatMessage} />
 			</div>
 		</div>
 	)
