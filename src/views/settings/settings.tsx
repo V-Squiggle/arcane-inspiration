@@ -13,7 +13,7 @@ const Settings = () => {
 
 	return (
 		<div className={wrapperClassNames}>
-			{(
+			{
 				<div>
 					<h1>Settings</h1>
 					<ControlledInput
@@ -23,7 +23,7 @@ const Settings = () => {
 						setValue={setOpenAiToken}
 					/>
 				</div>
-			)}
+			}
 		</div>
 	)
 }

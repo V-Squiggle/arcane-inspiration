@@ -4,16 +4,17 @@ import { Home } from '../home'
 import Settings from '../settings/settings'
 import { FaCog, FaComment, FaHome } from 'react-icons/fa'
 
+/* eslint-disable sort-keys */
 export const appRoutes = {
-	Chat: {
-		component: Chat,
-		icon: <FaComment />,
-		label: 'Chat',
-	},
 	Home: {
 		component: Home,
 		icon: <FaHome />,
 		label: 'Home',
+	},
+	Chat: {
+		component: Chat,
+		icon: <FaComment />,
+		label: 'Chat',
 	},
 	Settings: {
 		component: Settings,
@@ -21,7 +22,7 @@ export const appRoutes = {
 		label: 'Settings',
 	},
 }
-
+/* eslint-enable sort-keys */
 export type Route = {
 	label: string
 	component: () => JSX.Element
