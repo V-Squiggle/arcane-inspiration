@@ -8,19 +8,17 @@ type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({ setActiveTab, appRoutes }) => {
 	return (
-		<>
-			<nav className={styles['nav-menu']}>
-				{Object.values(appRoutes).map((route, index) => (
-					<button
-						key={index}
-						className={styles['navbar-button']}
-						onClick={() => setActiveTab(route)}
-					>
-						{route.icon}
-					</button>
-				))}
-			</nav>
-		</>
+		<nav className={styles['nav-menu']}>
+			{Object.values(appRoutes).map((route, index) => (
+				<button
+					key={index}
+					className={styles['navbar-button']}
+					onClick={() => setActiveTab(route)}
+				>
+					<route.icon />
+				</button>
+			))}
+		</nav>
 	)
 }
 
