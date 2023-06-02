@@ -14,8 +14,8 @@ export const appRoutes: AppRoutes = {
 	},
 	Settings: {
 		component: Settings,
-		label:  'Settings',
-	}
+		label: 'Settings',
+	},
 }
 /* eslint-enable sort-keys */
 
