@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { AppRoutes, Route } from '../../views/router/routes'
 import styles from './navbar.module.scss'
-
+import getNavbarIcon from './navbar-icon'
 type NavbarProps = {
 	setActiveTab: Dispatch<SetStateAction<Route>>
 	appRoutes: AppRoutes
@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveTab, appRoutes }) => {
 						className={styles['navbar-button']}
 						onClick={() => setActiveTab(route)}
 					>
-						{route.label}
+						{getNavbarIcon(route.label)}
 					</button>
 				))}
 			</nav>
