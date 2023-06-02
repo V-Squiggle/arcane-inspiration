@@ -1,22 +1,12 @@
 import { useState } from 'react'
 import { ControlledInput } from '@/components'
-import classnames from 'classnames'
-
-import styles from './settings.module.scss'
 
 const Settings = () => {
-	const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 	const [openAiToken, setOpenAiToken] = useState('')
-	const wrapperClassNames = classnames(styles['wrapper'], {
-		[styles['active']]: isSettingsOpen,
-	})
 
 	return (
-		<div className={wrapperClassNames}>
-			<button onClick={() => setIsSettingsOpen((prev) => !prev)}>
-				Settings
-			</button>
-			{isSettingsOpen && (
+		<div>
+			{
 				<div>
 					<h1>Settings</h1>
 					<ControlledInput
@@ -26,7 +16,7 @@ const Settings = () => {
 						setValue={setOpenAiToken}
 					/>
 				</div>
-			)}
+			}
 		</div>
 	)
 }

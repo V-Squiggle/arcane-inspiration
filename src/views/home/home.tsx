@@ -2,7 +2,7 @@
 
 // "modules" enables css modules for webpack.
 //  This allows you to import a css file into a js file and access the css classes as properties on an object.
-import styles from './Home.module.scss'
+import styles from './home.module.scss'
 
 const Home = () => {
 	return (
