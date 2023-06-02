@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ setActiveTab, appRoutes }) => {
 						className={styles['navbar-button']}
 						onClick={() => setActiveTab(route)}
 					>
-						{getNavbarIcon(route.label)}
+						{route.icon}
 					</button>
 				))}
 			</nav>
