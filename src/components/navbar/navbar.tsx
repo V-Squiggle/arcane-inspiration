@@ -1,22 +1,23 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { AppRoutes, Route } from '../../views/router/routes'
+import { Route, appRoutes } from '../../views/router/routes'
 import styles from './navbar.module.scss'
+import classNames from 'classnames'
+import NavbarButton from './navbar-button'
 type NavbarProps = {
 	setActiveTab: Dispatch<SetStateAction<Route>>
-	appRoutes: AppRoutes
+	activeTab: Route
 }
 
-const Navbar: React.FC<NavbarProps> = ({ setActiveTab, appRoutes }) => {
+const Navbar: React.FC<NavbarProps> = ({ setActiveTab, activeTab }) => {
 	return (
 		<nav className={styles['nav-menu']}>
 			{Object.values(appRoutes).map((route, index) => (
-				<button
-					key={index}
-					className={styles['navbar-button']}
+				<NavbarButton
+					key={`button ${index}`}
+					icon={route.icon}
+					isActive={activeTab.label === route.label}
 					onClick={() => setActiveTab(route)}
-				>
-					<route.icon />
-				</button>
+				/>
 			))}
 		</nav>
 	)

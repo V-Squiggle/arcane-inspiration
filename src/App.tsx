@@ -1,11 +1,7 @@
 import Router from './views/router/router'
 
 function App() {
-	return (
-		<>
-			<Router />
-		</>
-	)
+	return <Router />
 }
 
 export default App
