@@ -17,4 +17,4 @@ const TitleBar = () => {
 	)
 }
 
-export default TitleBar
+export { TitleBar }

@@ -1,6 +1,8 @@
 @import '@/styles/globals.scss';
 
 $nav-menu-width: 60px;
+$nav-button-margin: 7px;
+$nav-button-width: $nav-menu-width - 2 * $nav-button-margin;
 
 .nav-menu {
 	width: $nav-menu-width;
@@ -8,29 +10,8 @@ $nav-menu-width: 60px;
 	padding-top: 10px;
 }
 
-$nav-button-margin: 7px;
-$nav-button-width: $nav-menu-width - 2 * $nav-button-margin;
-.navbar-button {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-
-	background-color: $button-background;
-	color: $button-foreground;
-
+.button-wrapper {
 	height: $nav-button-width;
 	width: $nav-button-width;
 	margin: $nav-button-margin;
-	padding: 7px;
-
-	border-radius: 10px;
-
-	&.highlighted {
-		outline: 2px solid $highlight-color;
-	}
-
-	svg {
-		height: 100%;
-		width: 100%;
-	}
 }

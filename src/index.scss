@@ -54,3 +54,16 @@ button {
 	padding: 2rem;
 	text-align: center;
 }
+
+textarea {
+	inherits: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+input {
+	inherits: none;
+	outline: none;
+}

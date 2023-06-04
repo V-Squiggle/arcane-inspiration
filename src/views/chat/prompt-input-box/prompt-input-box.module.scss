@@ -1,19 +1,10 @@
 @import '@/styles/globals.scss';
 
-.prompt-input {
-	&--wrapper {
-		box-sizing: border-box;
-		margin: 1rem 0 0 0;
-		padding: 1rem;
-		border-top: 1px solid $border-color;
-		box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
-
-		flex-shrink: 0;
-	}
-}
-.textarea {
+.wrapper {
 	box-sizing: border-box;
-	height: 2.5rem;
-	resize: vertical;
-	width: 100%;
+	border-top: 1px solid $border-color;
+	margin-top: 1rem;
+	box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+
+	flex-shrink: 0;
 }
