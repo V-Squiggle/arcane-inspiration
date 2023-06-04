@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@import '@/styles/globals.scss';
 
 .container {
 	height: 2rem;
@@ -17,7 +17,7 @@
 		-webkit-app-region: no-drag;
 
 		&:hover {
-			background-color: $ui-primary-color;
+			background-color: $primary-color;
 		}
 	}
 }

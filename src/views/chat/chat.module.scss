@@ -1,12 +1,16 @@
+@import '@/styles/globals.scss';
+
 .wrapper {
 	display: flex;
 	height: 100%;
 	justify-content: center;
 	width: 100%;
+	padding: 1rem 0;
+	box-sizing: border-box;
 }
 
 .container {
-	border: 2px solid #a0a0a0;
+	border: 2px solid $border-color;
 	border-radius: 12px;
 	display: flex;
 	flex-direction: column;

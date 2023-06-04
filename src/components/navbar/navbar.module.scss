@@ -1,31 +1,32 @@
-@import '@/styles/variables.scss';
+@import '@/styles/globals.scss';
 
 $nav-menu-width: 60px;
 
 .nav-menu {
 	width: $nav-menu-width;
 	height: 100%;
+	padding-top: 10px;
 }
 
-$nav-button-margin: 10px;
+$nav-button-margin: 7px;
 $nav-button-width: $nav-menu-width - 2 * $nav-button-margin;
 .navbar-button {
 	align-items: center;
 	display: flex;
 	justify-content: center;
 
-	background-color: $ui-button-background;
-	color: $ui-button-foreground;
+	background-color: $button-background;
+	color: $button-foreground;
 
 	height: $nav-button-width;
 	width: $nav-button-width;
 	margin: $nav-button-margin;
 	padding: 7px;
 
-	border-radius: 17px;
+	border-radius: 10px;
 
 	&.highlighted {
-		outline: 5px solid $ui-highlight-color;
+		outline: 2px solid $highlight-color;
 	}
 
 	svg {
