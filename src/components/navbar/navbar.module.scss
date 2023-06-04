@@ -1,12 +1,35 @@
+@import '@/styles/variables.scss';
+
+$nav-menu-width: 60px;
+
 .nav-menu {
-  background-color: #3d3f46;
-  width: 60px;
-  height: 100%;
+	width: $nav-menu-width;
+	height: 100%;
 }
+
+$nav-button-margin: 10px;
+$nav-button-width: $nav-menu-width - 2 * $nav-button-margin;
 .navbar-button {
-  background-color: #3d3f46;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+
+	background-color: $ui-button-background;
+	color: $ui-button-foreground;
+
+	height: $nav-button-width;
+	width: $nav-button-width;
+	margin: $nav-button-margin;
+	padding: 7px;
+
+	border-radius: 17px;
+
+	&.highlighted {
+		outline: 5px solid $ui-highlight-color;
+	}
+
+	svg {
+		height: 100%;
+		width: 100%;
+	}
 }

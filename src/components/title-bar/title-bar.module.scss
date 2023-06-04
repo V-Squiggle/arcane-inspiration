@@ -1,0 +1,23 @@
+@import '@/styles/variables.scss';
+
+.container {
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin-left: 15px;
+
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+
+	button {
+		background-color: transparent;
+		-webkit-app-region: no-drag;
+
+		&:hover {
+			background-color: $ui-primary-color;
+		}
+	}
+}
