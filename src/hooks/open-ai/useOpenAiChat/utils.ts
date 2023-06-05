@@ -2,7 +2,7 @@ import {
 	ChatCompletionRequestMessage,
 	ChatCompletionRequestMessageRoleEnum,
 } from 'openai'
-import { GptMessage } from './useOpenAiCompletion.types'
+import { GptMessage } from './useOpenAiChat.types'
 
 export const mapHistory = (
 	history: GptMessage[],

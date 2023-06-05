@@ -1,5 +1,5 @@
 import { ChatHistory } from './chatHistory'
-import { useOpenAICompletion } from '@/hooks'
+import { useOpenAICompletion } from '@/hooks/open-ai'
 import { PromptInputBox } from './prompt-input-box'
 
 import styles from './chat.module.scss'

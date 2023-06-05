@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { CreateCompletionResponse } from 'openai'
-import { GptErrorResponse, GptMessage } from './useOpenAiCompletion.types'
-import useOpenAiConfigInstance from './useOpenAiConfigInstance'
+import { GptErrorResponse, GptMessage } from './useOpenAiChat.types'
 import { mapHistory } from './utils'
+import { useOpenAi } from '@/hooks/open-ai'
 
 const useOpenAICompletion = () => {
-	const { getCompletion, getChatCompletion } = useOpenAiConfigInstance()
+	const { getChatCompletion } = useOpenAi()
 	const [completionRequestHistory, setCompletionRequestHistory] = useState<
 		CreateCompletionResponse[]
 	>([])
@@ -34,24 +34,6 @@ const useOpenAICompletion = () => {
 		}
 	}
 
-	const sendMessage = (message: string) => {
-		addMessageToHistory({
-			isError: false,
-			message: message,
-			sender: 'user',
-		})
-		getCompletion(message)
-			.then((response) => {
-				setCompletionRequestHistory((prev) => [...prev, response.data])
-				addMessageToHistory({
-					isError: false,
-					message: response.data.choices[0].text || '',
-					sender: 'bot',
-				})
-			})
-			.catch(handleOpenAiErrorResponse)
-	}
-
 	const sendChatMessage = (message: string) => {
 		addMessageToHistory({
 			isError: false,
@@ -75,7 +57,6 @@ const useOpenAICompletion = () => {
 		latestResponse,
 		messageHistory,
 		sendChatMessage,
-		sendMessage,
 	}
 }
 
