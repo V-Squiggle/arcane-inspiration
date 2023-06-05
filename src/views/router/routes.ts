@@ -1,6 +1,6 @@
-import { Home } from '../home'
-import { Chat } from '../chat'
-import { Settings } from '../settings'
+import Home from '@/views/home'
+import Chat from '@/views/chat'
+import Settings from '@/views/settings'
 import { FaCog, FaComment, FaHome } from 'react-icons/fa'
 import { IconType } from 'react-icons'
 

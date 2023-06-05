@@ -39,4 +39,4 @@ const cleanMessage = (message: string) => {
 	return message.trimStart().trimEnd()
 }
 
-export { ChatMessage }
+export default ChatMessage

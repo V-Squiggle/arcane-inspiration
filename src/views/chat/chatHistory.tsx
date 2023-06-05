@@ -3,6 +3,8 @@ import { GptMessage } from '@/hooks/useOpenAiCompletion/useOpenAiCompletion.type
 import { ChatMessage } from './chat-message'
 import { useEffect } from 'react'
 
+import styles from './chat.module.scss'
+
 type Props = {
 	messageHistory: GptMessage[]
 }
@@ -15,11 +17,13 @@ const ChatHistory = ({ messageHistory }: Props) => {
 	}, [messageHistory.length])
 
 	return (
-		<ScrollableWindow id='chat-history'>
-			{messageHistory.map((message, i) => (
-				<ChatMessage key={i} message={message} />
-			))}
-		</ScrollableWindow>
+		<div className={styles['message-container']}>
+			<ScrollableWindow id='chat-history'>
+				{messageHistory.map((message, i) => (
+					<ChatMessage key={i} message={message} />
+				))}
+			</ScrollableWindow>
+		</div>
 	)
 }
 

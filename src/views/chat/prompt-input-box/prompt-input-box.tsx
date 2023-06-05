@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, useEffect, useRef, useState } from 'react'
+import { KeyboardEventHandler, useState } from 'react'
 
 import styles from './prompt-input-box.module.scss'
 import { StyledTextarea } from '@/components'
@@ -49,4 +49,4 @@ const PromptInputBox = ({ sendMessage }: Props) => {
 	)
 }
 
-export { PromptInputBox }
+export default PromptInputBox

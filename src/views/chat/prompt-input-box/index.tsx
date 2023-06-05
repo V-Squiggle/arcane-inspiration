@@ -1,1 +1,1 @@
-export * from './prompt-input-box'
+export { default as PromptInputBox } from './prompt-input-box'

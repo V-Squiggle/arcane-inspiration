@@ -1,4 +1,26 @@
+@import '@/styles/globals.scss';
 .wrapper {
 	flex-grow: 1;
 	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 0.5rem;
+	}
+	&::-webkit-scrollbar-track {
+		background: $secondary-color;
+		border-radius: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $button-background;
+		border-radius: 5px;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background: adjust-color(
+			$color: $button-background,
+			$hue: 0,
+			$saturation: 0%,
+			$lightness: 10%,
+			$alpha: 1
+		);
+	}
 }
