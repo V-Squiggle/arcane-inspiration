@@ -1,4 +1,4 @@
-import { ChatHistory } from '.'
+import { ChatHistory } from './chatHistory'
 import { useOpenAICompletion } from '@/hooks'
 import { PromptInputBox } from './prompt-input-box'
 

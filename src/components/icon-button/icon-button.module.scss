@@ -1,0 +1,25 @@
+@import '@/styles/globals.scss';
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: $button-background;
+	color: $button-foreground;
+
+	width: 100%;
+	height: 100%;
+	padding: 7px;
+
+	border-radius: 10px;
+
+	&.highlighted {
+		outline: 2px solid $highlight-color;
+	}
+
+	svg {
+		height: 100%;
+		width: 100%;
+	}
+}

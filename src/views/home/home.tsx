@@ -1,7 +1,3 @@
-// "scss" (Sass) is an extremely popular way to write CSS. It's a superset of CSS that adds in special features.
-
-// "modules" enables css modules for webpack.
-//  This allows you to import a css file into a js file and access the css classes as properties on an object.
 import styles from './home.module.scss'
 
 const Home = () => {
@@ -12,4 +8,4 @@ const Home = () => {
 	)
 }
 
-export { Home }
+export default Home

@@ -1,0 +1,41 @@
+@import '@/styles/globals.scss';
+
+.wrapper {
+	align-items: stretch;
+	display: flex;
+	flex: 1 1 0%;
+	flex-direction: column;
+	height: 100%;
+	position: relative;
+}
+
+.container {
+	box-sizing: border-box;
+
+	display: flex;
+	align-items: flex-end;
+
+	background-color: $secondary-color;
+	box-shadow: 0 0 20px rgba($highlight-color, 0.1);
+	color: rgba(255, 255, 255, 1);
+	padding: 1rem;
+	width: 100%;
+	position: relative;
+
+	> textarea {
+		border: 0 solid #d9d9e3;
+		box-sizing: border-box;
+		// This matches the lineHieght in the utils.ts file. Update both if you change one.
+		line-height: 1.2rem;
+		margin: 0;
+		width: 100%;
+		resize: none;
+		background-color: transparent;
+		min-height: 2rem;
+	}
+}
+
+.button-wrapper {
+	height: 2rem;
+	width: 2rem;
+}

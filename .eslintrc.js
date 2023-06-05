@@ -23,13 +23,20 @@ module.exports = {
 		ecmaVersion: 8,
 		sourceType: 'module',
 	},
-	plugins: ['react', '@typescript-eslint', 'react-hooks', 'prettier'],
+	plugins: [
+		'react',
+		'@typescript-eslint',
+		'react-hooks',
+		'prettier',
+		'react-refresh',
+	],
 	rules: {
 		'@typescript-eslint/no-unused-vars': 'warn',
 		'max-len': ['error', { code: 120, ignoreUrls: true, tabWidth: 2 }],
 		'newline-before-return': 'error',
 		'no-console': 'warn',
 		'prefer-const': ['error', { destructuring: 'all' }],
+		'react-refresh/only-export-components': 'warn',
 		'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
 		'react/react-in-jsx-scope': 'off',
 		'sort-imports': [

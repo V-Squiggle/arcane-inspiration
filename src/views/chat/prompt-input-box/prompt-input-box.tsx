@@ -1,6 +1,7 @@
-import { KeyboardEventHandler, useEffect, useRef, useState } from 'react'
+import { KeyboardEventHandler, useState } from 'react'
 
 import styles from './prompt-input-box.module.scss'
+import { StyledTextarea } from '@/components'
 
 type Props = {
 	sendMessage: (message: string) => void
@@ -31,21 +32,21 @@ const PromptInputBox = ({ sendMessage }: Props) => {
 	}
 
 	return (
-		<div className={styles['prompt-input--wrapper']}>
-			<textarea
-				id='prompt-input'
-				placeholder='Send a message.'
-				rows={1}
-				value={message}
-				onChange={handlePromptChange}
-				// Using the curried function like this is the equivalent of doing:
-				// onKeyDown={(event) => EnterEventHandler(submitPrompt)(event)}
-				onKeyDown={EnterEventHandler(submitPrompt)}
-				className={styles['textarea']}
+		<form
+			className={styles['wrapper']}
+			onSubmit={(e) => {
+				e.preventDefault()
+				submitPrompt()
+			}}
+		>
+			<StyledTextarea
+				text={message}
+				onTextUpdate={handlePromptChange}
+				hasSubmitButton
+				isSubmitting={false}
 			/>
-			<button onClick={submitPrompt}>Send Message</button>
-		</div>
+		</form>
 	)
 }
 
-export { PromptInputBox }
+export default PromptInputBox

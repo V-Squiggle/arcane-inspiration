@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Route, appRoutes } from './routes'
-import Navbar from '@/components/navbar/navbar'
-import TitleBar from '@/components/title-bar/title-bar'
+import { Navbar, TitleBar } from '@/components'
 
 import styles from './router.module.scss'
 
