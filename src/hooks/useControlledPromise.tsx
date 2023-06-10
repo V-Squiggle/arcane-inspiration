@@ -1,5 +1,4 @@
 import { StatusCode } from '@/types'
-import { useState } from 'react'
 
 export type ControlledResponse<T> = {
 	data: T | null
@@ -11,10 +10,10 @@ const useControlledPromise = <T,>(
 	asyncFunction: () => Promise<T>,
 	callOnMount = false,
 ) => {
-	const [data, setData] = useState<T | null>(null)
-	const [status, setStatus] = useState<StatusCode>(StatusCode.Idle)
+	const data = null
+	const status = StatusCode.Idle
 
-	const triggerAsyncFunction = async () => {
+	const triggerAsyncFunction = () => {
 		//
 	}
 
