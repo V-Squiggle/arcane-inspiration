@@ -2,7 +2,7 @@ export type Character = {
 	name: string
 	race: string
 	gender: string
-	age: string
+	age: number
 	backstory: string
 	personality: string
 	appearance: string
@@ -11,4 +11,5 @@ export type Character = {
 	occupation: string
 	hobbies: string
 	fears: string
+	image?: string
 }

@@ -8,8 +8,10 @@ type Props = {
 }
 const ScrollableWindow = ({ children, id }: Props) => {
 	return (
-		<div className={styles['wrapper']} id={id}>
-			{children}
+		<div className={styles['wrapper']}>
+			<div className={styles['container']} id={id}>
+				{children}
+			</div>
 		</div>
 	)
 }

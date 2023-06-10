@@ -1,0 +1,29 @@
+@import '@/styles/globals.scss';
+
+$font-size: 1rem;
+$line-height: 1.5rem;
+$button-pad: 5px;
+$button-size: 10rem;
+.container {
+	all: revert;
+	border: none;
+	background-color: $button-background;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	font-size: $font-size;
+	line-height: $line-height;
+	width: $button-size;
+	height: $button-size;
+	padding: $button-pad;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.thumbnail {
+	width: calc(100% - $button-pad);
+	height: calc(100% - $button-pad - $line-height);
+	object-fit: contain;
+}

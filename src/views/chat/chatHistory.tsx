@@ -1,7 +1,7 @@
 import { ScrollableWindow } from '@/components'
-import { GptMessage } from '@/hooks/useOpenAiCompletion/useOpenAiCompletion.types'
 import { ChatMessage } from './chat-message'
 import { useEffect } from 'react'
+import { GptMessage } from '@/hooks/open-ai/useOpenAiChat/useOpenAiChat.types'
 
 import styles from './chat.module.scss'
 

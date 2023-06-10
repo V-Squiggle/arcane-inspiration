@@ -2,6 +2,10 @@ import { BrowserWindow, Menu, app, ipcMain, shell } from 'electron'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import { update } from './update'
+import installExtension, {
+	REACT_DEVELOPER_TOOLS,
+	//REDUX_DEVTOOLS,
+} from 'electron-devtools-assembler'
 
 // The built directory structure
 //
@@ -55,13 +59,17 @@ async function createWindow() {
 			// Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
 			nodeIntegration: true,
 			preload,
+			webSecurity: false,
 		},
 	})
+
 	win.webContents.on('before-input-event', (_, input) => {
 		if (win && input.type === 'keyDown' && input.key === 'F12') {
-			win.webContents.isDevToolsOpened()
-				? win.webContents.closeDevTools()
-				: win.webContents.openDevTools()
+			if (!win.webContents.isDevToolsOpened()) {
+				win.webContents.openDevTools()
+			} else if (!win.webContents.isDevToolsFocused()) {
+				win.webContents.devToolsWebContents?.focus()
+			}
 		}
 	})
 	if (url) {

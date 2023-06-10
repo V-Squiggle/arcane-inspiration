@@ -8,11 +8,22 @@ type Props = {
 	isActive?: boolean
 	isSubmit?: boolean
 	onClick?: () => void
+	backgroundColor?: 'primary' | 'secondary' | 'tertiary' | 'transparent'
 }
 
-const IconButton = ({ icon: Icon, isActive, isSubmit, onClick }: Props) => {
+const IconButton = ({
+	icon: Icon,
+	isActive,
+	isSubmit,
+	onClick,
+	backgroundColor,
+}: Props) => {
 	const className = classNames(styles['wrapper'], {
 		[styles['highlighted']]: isActive,
+		[styles['background-primary']]: backgroundColor === 'primary',
+		[styles['background-secondary']]: backgroundColor === 'secondary',
+		[styles['background-tertiary']]: backgroundColor === 'tertiary',
+		[styles['background-transparent']]: backgroundColor === 'transparent',
 	})
 	const buttonType = isSubmit ? 'submit' : 'button'
 
