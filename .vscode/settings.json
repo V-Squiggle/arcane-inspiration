@@ -1,11 +1,20 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.tsc.autoDetect": "off",
-  "json.schemas": [
-    {
-      "fileMatch": ["/*electron-builder.json5", "/*electron-builder.json"],
-      "url": "https://json.schemastore.org/electron-builder"
-    }
-  ],
-  "editor.formatOnSave": true
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.tsc.autoDetect": "off",
+	"json.schemas": [
+		{
+			"fileMatch": ["/*electron-builder.json5", "/*electron-builder.json"],
+			"url": "https://json.schemastore.org/electron-builder"
+		}
+	],
+	"editor.formatOnSave": true,
+	"explorer.fileNesting.enabled": true,
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js",
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.tsx": "${capture}.ts, ${capture}.module.scss, ${capture}.util.scss, ${capture}.types.ts",
+		"tsconfig.json": "tsconfig.*.json",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml"
+	}
 }

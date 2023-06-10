@@ -1,12 +1,15 @@
 import { ScrollableWindow } from '@/components'
 import MainWrapper from '@/components/default-main-wrapper/main-wrapper'
-import { StatusCode } from '@/types'
-import React from 'react'
-import { getGenerateButtonText } from '../utils'
+import {
+	getGenerateButtonText,
+	getGenerateStatusLabel,
+	isGenerating,
+} from './generate-character.utils'
+import { GenerateCharacterStatus } from '@/hooks/useCharacterRoster.types'
 
 type Props = {
 	generateCharacter: () => void
-	generateCharacterStatus: StatusCode
+	generateCharacterStatus: GenerateCharacterStatus
 }
 const GenerateCharacter = ({
 	generateCharacter,
@@ -16,8 +19,9 @@ const GenerateCharacter = ({
 		<MainWrapper>
 			<ScrollableWindow id='Generate-Character'>
 				<h1>Generate Character</h1>
+				<p>{getGenerateStatusLabel(generateCharacterStatus)}</p>
 				<button
-					disabled={generateCharacterStatus === StatusCode.Loading}
+					disabled={isGenerating(generateCharacterStatus)}
 					onClick={generateCharacter}
 				>
 					{getGenerateButtonText(generateCharacterStatus)}

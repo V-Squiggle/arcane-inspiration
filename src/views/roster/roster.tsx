@@ -1,16 +1,22 @@
 import { useState } from 'react'
-import { Character, StatusCode } from '@/types'
+import { Character } from '@/types'
 import { useCharacterRoster } from '@/hooks'
 import { CharacterPreviewButton, ScrollableWindow } from '@/components'
 import MainWrapper from '@/components/default-main-wrapper/main-wrapper'
 import CharacterSummary from './character-summary/character-summary'
 import GenerateCharacter from './generate-character/generate-character'
 import Drawer from '@/components/drawer/drawer'
+import { GenerateCharacterStatus } from '@/hooks/useCharacterRoster.types'
 
 import styles from './roster.module.scss'
 
 const Roster = () => {
-	const [drawerContent, setDrawerContent] = useState<React.ReactNode>(null)
+	const [drawerContent, setDrawerContent] = useState<
+		'closed' | 'summary' | 'generate'
+	>('closed')
+	const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
+		null,
+	)
 	const { characters, generateCharacter, status } = useCharacterRoster()
 
 	return (
@@ -19,34 +25,40 @@ const Roster = () => {
 				<h1>Roster</h1>
 				<button
 					onClick={() => {
-						setDrawerContent(
-							<GenerateCharacter
-								generateCharacter={generateCharacter}
-								generateCharacterStatus={status}
-							/>,
-						)
+						setDrawerContent('generate')
 					}}
 				>
 					Generate Character
 				</button>
-				{status === StatusCode.Error && <p>Failed to generate character</p>}
+				{status === GenerateCharacterStatus.Error && (
+					<p>Failed to generate character</p>
+				)}
 				{characters.map((character: Character) => (
 					<CharacterPreviewButton
 						key={character.name}
 						character={character}
 						onClick={() => {
-							setDrawerContent(<CharacterSummary character={character} />)
+							setSelectedCharacter(character)
+							setDrawerContent('summary')
 						}}
 					/>
 				))}
 			</ScrollableWindow>
 			<Drawer
-				isOpen={!!drawerContent}
+				isOpen={drawerContent !== 'closed'}
 				closeDrawer={() => {
-					setDrawerContent(null)
+					setDrawerContent('closed')
 				}}
 			>
-				{drawerContent}
+				{drawerContent === 'summary' && selectedCharacter && (
+					<CharacterSummary character={selectedCharacter} />
+				)}
+				{drawerContent === 'generate' && (
+					<GenerateCharacter
+						generateCharacter={generateCharacter}
+						generateCharacterStatus={status}
+					/>
+				)}
 			</Drawer>
 		</MainWrapper>
 	)
