@@ -23,3 +23,21 @@
 		width: 100%;
 	}
 }
+
+.background {
+	&-primary {
+		background-color: $primary-color;
+	}
+
+	&-secondary {
+		background-color: $secondary-color;
+	}
+
+	&-tertiary {
+		background-color: $tertiary-color;
+	}
+
+	&-transparent {
+		background-color: transparent;
+	}
+}

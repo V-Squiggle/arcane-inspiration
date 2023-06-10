@@ -4,7 +4,8 @@ export type GptMessage = {
 	isError: boolean
 }
 
-export type MessageSender = 'user' | 'bot' | 'system' | 'error'
+export const messageSenderTypes = ['user', 'bot', 'system', 'error'] as const
+export type MessageSender = (typeof messageSenderTypes)[number]
 
 export type GptErrorResponse = {
 	error: {

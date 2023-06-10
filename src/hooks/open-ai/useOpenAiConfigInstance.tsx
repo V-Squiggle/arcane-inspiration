@@ -1,6 +1,6 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 
-const useOpenAiConfigInstance = () => {
+const useOpenAi = () => {
 	const apiKey = import.meta.env.VITE_OPENAI_API_KEY
 	const configuration = new Configuration({
 		apiKey,
@@ -8,14 +8,6 @@ const useOpenAiConfigInstance = () => {
 	delete configuration.baseOptions.headers['User-Agent']
 
 	const openAi = new OpenAIApi(configuration)
-
-	const getCompletion = async (prompt: string) =>
-		await openAi.createCompletion({
-			max_tokens: 100,
-			model: 'text-davinci-003',
-			prompt: prompt,
-			temperature: 0.5,
-		})
 
 	const getChatCompletion = async (
 		history: ChatCompletionRequestMessage[],
@@ -33,7 +25,7 @@ const useOpenAiConfigInstance = () => {
 			model: 'gpt-3.5-turbo',
 		})
 
-	return { getChatCompletion, getCompletion }
+	return { getChatCompletion }
 }
 
-export default useOpenAiConfigInstance
+export { useOpenAi }
