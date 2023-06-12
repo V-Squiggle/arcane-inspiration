@@ -9,6 +9,7 @@ import { IconButton } from '../icon-button/icon-button'
 type Props = {
 	hasSubmitButton?: boolean
 	isSubmitting?: boolean
+	placeholder?: string
 	text: string
 	onTextUpdate: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
@@ -16,6 +17,7 @@ type Props = {
 const StyledTextarea = ({
 	hasSubmitButton,
 	isSubmitting,
+	placeholder = 'Send a message.',
 	text,
 	onTextUpdate: setText,
 }: Props) => {
@@ -29,7 +31,7 @@ const StyledTextarea = ({
 					tabIndex={0}
 					data-id='request-:R1dd6:-0'
 					rows={1}
-					placeholder='Send a message.'
+					placeholder={placeholder}
 					style={getInlinedStyles(text)}
 					value={text}
 					onChange={setText}

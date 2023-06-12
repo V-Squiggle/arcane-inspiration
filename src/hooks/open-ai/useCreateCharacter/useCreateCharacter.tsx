@@ -6,15 +6,17 @@ import {
 	createCharacterImageSystemPrompt,
 	createCharacterPrompt,
 	createCharacterSystemPrompt,
-} from './utils'
+	createExamplePromptsSystemPrompt,
+} from './useCreateCharacter.utils'
+import { GenerateCharacterParameters } from '@/hooks/useCharacterRoster.types'
 import axios from 'axios'
 
 const useCreateCharacter = () => {
 	const { getChatCompletion } = useOpenAi()
 
-	const generateNewNpc = async (props: {
-		race: string
-	}): Promise<Character | null> =>
+	const generateNewNpc = async (
+		props?: GenerateCharacterParameters,
+	): Promise<Character | null> =>
 		await getChatCompletion(
 			[createCharacterSystemPrompt()],
 			createCharacterPrompt(props),
@@ -47,7 +49,7 @@ const useCreateCharacter = () => {
 		character: Character,
 	): Promise<TxtToImgRequest> =>
 		await getChatCompletion(
-			[createCharacterImageSystemPrompt()],
+			[createCharacterImageSystemPrompt(), createExamplePromptsSystemPrompt()],
 			createCharacterImagePrompt(character),
 		)
 			.then((response) => {
