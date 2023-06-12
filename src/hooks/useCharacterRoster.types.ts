@@ -6,3 +6,11 @@ export enum GenerateCharacterStatus {
 	Success,
 	Error,
 }
+
+export type GenerateCharacterParameters = {
+	name: string
+	race: string
+	gender: string
+	age?: number
+	customRequest: string
+}

@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { Character } from '@/types'
 import { generateImage, useCreateCharacter } from '@/hooks/open-ai'
-import { GenerateCharacterStatus } from './useCharacterRoster.types'
+import {
+	GenerateCharacterParameters,
+	GenerateCharacterStatus,
+} from './useCharacterRoster.types'
 
 const useCharacterRoster = () => {
 	const [status, setStatus] = useState<GenerateCharacterStatus>(
@@ -14,12 +17,14 @@ const useCharacterRoster = () => {
 	const [characters, setCharacters] = useState<Character[]>([])
 	const { generateNewNpc, generateNewNpcImagePrompt } = useCreateCharacter()
 
-	const generateCharacter = async () => {
+	const generateCharacter = async (
+		generationParameters?: GenerateCharacterParameters,
+	) => {
 		if (isGenerating) return
 		try {
 			setStatus(GenerateCharacterStatus.GeneratingDetails)
 
-			const character = await generateNewNpc({ race: 'Half-Orc/Half-Elf' })
+			const character = await generateNewNpc(generationParameters)
 			if (!character) {
 				setStatus(GenerateCharacterStatus.Error)
 
