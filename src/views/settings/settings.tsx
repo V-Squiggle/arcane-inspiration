@@ -1,8 +1,8 @@
 import { ControlledInput } from '@/components'
 import { useAppState } from '@/hooks/open-ai/useAppState/useAppState'
 const Settings = () => {
-	const { openAiToken, setOpenAiToken } = useAppState();
-	
+	const { openAiToken, setOpenAiToken } = useAppState()
+
 	return (
 		<div>
 			{
