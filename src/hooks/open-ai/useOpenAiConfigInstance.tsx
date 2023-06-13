@@ -1,9 +1,10 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 import { useAppState } from './useAppState/useAppState'
+
 const useOpenAi = () => {
-	const apiKey = useAppState().openAiToken
+	const { openAiToken } = useAppState()
 	const configuration = new Configuration({
-		apiKey,
+		apiKey: openAiToken,
 	})
 	delete configuration.baseOptions.headers['User-Agent']
 
