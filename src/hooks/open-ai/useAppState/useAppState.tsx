@@ -1,31 +1,32 @@
 import { createContext, useState, useContext, FC } from 'react'
 
-interface ContextType {
+type ContextType = {
     openAiToken: string;
-    setOpenAiToken: React.Dispatch<React.SetStateAction<string>>;
-}
+    setOpenAiToken: React.Dispatch<React.SetStateAction<string>> | undefined;
+  };
+  
 type ContainerProps = {
-    children: React.ReactNode; //👈 children prop typr
-};
+    children: React.ReactNode; 
+}
 
-export const OpenAiTokenContext = createContext<ContextType | undefined>(undefined);
+const AppStateContext = createContext<ContextType>({openAiToken: '', setOpenAiToken: undefined});
 
 const AppStateProvider = (props: ContainerProps) => {
     const [openAiToken, setOpenAiToken] = useState('');
 
     return (
-        <OpenAiTokenContext.Provider value={{openAiToken, setOpenAiToken}}>
+        <AppStateContext.Provider value={{openAiToken, setOpenAiToken}}>
             {props.children}
-        </OpenAiTokenContext.Provider>
+        </AppStateContext.Provider>
     )
 }
 
 export { AppStateProvider }
 
-export const useOpenAiToken = () => {
-    const context = useContext(OpenAiTokenContext);
-    if (context === undefined) {
-        throw new Error('useOpenAiToken must be used within a AppStateProvider');
+export const useAppState = () => {
+    const {openAiToken, setOpenAiToken} = useContext(AppStateContext);
+    if (setOpenAiToken === undefined) {
+        throw new Error('setOpenAiToken must be used within a AppStateProvider');
     }
-    return context;
+    return {openAiToken, setOpenAiToken};
 };
