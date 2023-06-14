@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+// TODO: Remove eslint disable once Error handling is implemented
 import { useOpenAi } from '@/hooks/open-ai'
 import { Character } from '@/types'
 import {

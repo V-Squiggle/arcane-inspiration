@@ -1,5 +1,5 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
-import { useAppState } from './useAppState/useAppState'
+import { useAppState } from '../useAppState/useAppState'
 
 const useOpenAi = () => {
 	const { openAiToken } = useAppState()
