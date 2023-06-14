@@ -45,6 +45,8 @@ const useCharacterRoster = () => {
 			setStatus(GenerateCharacterStatus.Success)
 		} catch (e) {
 			setStatus(GenerateCharacterStatus.Error)
+			// eslint-disable-next-line no-console
+			// TODO: Remove eslint disable once Error handling is implemented
 			console.error(e)
 		}
 	}
