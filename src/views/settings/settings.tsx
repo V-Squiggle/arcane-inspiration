@@ -1,7 +1,10 @@
 import { ControlledInput } from '@/components'
-import { useAppState } from '@/hooks'
+import { openAiApiKeyAtom, openAiModelAtom } from '@/store/settings.store'
+import { useAtom } from 'jotai'
+
 const Settings = () => {
-	const { openAiToken, setOpenAiToken, model, setModel } = useAppState()
+	const [openAiApiKey, setOpenAiApiKey] = useAtom(openAiApiKeyAtom)
+	const [openAiModel, setOpenAiModel] = useAtom(openAiModelAtom)
 
 	return (
 		<div>
@@ -11,14 +14,14 @@ const Settings = () => {
 					<ControlledInput
 						type='text'
 						label='OpenAI Token'
-						value={openAiToken}
-						setValue={setOpenAiToken}
+						value={openAiApiKey}
+						setValue={setOpenAiApiKey}
 					/>
 					<ControlledInput
 						type='text'
 						label='Model'
-						value={model}
-						setValue={setModel}
+						value={openAiModel}
+						setValue={setOpenAiModel}
 					/>
 				</div>
 			}
