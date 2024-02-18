@@ -2,7 +2,13 @@ import { useContext } from 'react'
 import { AppStateContext } from './appStateProvider'
 
 export const useAppState = () => {
-	const { openAiToken, setOpenAiToken } = useContext(AppStateContext)
+	const { openAiToken, setOpenAiToken, model, setModel } =
+		useContext(AppStateContext)
 
-	return { openAiToken, setOpenAiToken }
+	return {
+		model,
+		openAiToken,
+		setModel,
+		setOpenAiToken,
+	}
 }

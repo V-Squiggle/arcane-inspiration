@@ -1,20 +1,35 @@
 import { StatusCode } from '@/types'
+import { useEffect, useState } from 'react'
 
-export type ControlledResponse<T> = {
+export type ControlledResponse<T, K> = {
 	data: T | null
 	status: StatusCode
-	triggerAsyncFunction: () => void
+	triggerAsyncFunction: (...args: K[]) => void
 }
 
-const useControlledPromise = <T,>(
-	asyncFunction: () => Promise<T>,
+const useControlledPromise = <T, K>(
+	asyncFunction: (...args: K[]) => Promise<T>,
 	callOnMount = false,
 ) => {
-	const data = null
-	const status = StatusCode.Idle
+	const [data, setData] = useState<T | null>(null)
+	const [status, setStatus] = useState<StatusCode>(StatusCode.Idle)
 
-	const triggerAsyncFunction = () => {
-		//
+	useEffect(() => {
+		if (callOnMount) {
+			triggerAsyncFunction()
+		}
+	}, [])
+
+	const triggerAsyncFunction = async (...args: K[]) => {
+		setStatus(StatusCode.Loading)
+		try {
+			const response = await asyncFunction(...args)
+			setData(response)
+			setStatus(StatusCode.Success)
+		} catch (error) {
+			setStatus(StatusCode.Error)
+			console.log(error)
+		}
 	}
 
 	return { data, status, triggerAsyncFunction }
