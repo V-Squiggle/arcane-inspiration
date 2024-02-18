@@ -1,7 +1,7 @@
 import { ControlledInput } from '@/components'
 import { useAppState } from '@/hooks/open-ai/useAppState/useAppState'
 const Settings = () => {
-	const { openAiToken, setOpenAiToken } = useAppState()
+	const { openAiToken, setOpenAiToken, model, setModel } = useAppState()
 
 	return (
 		<div>
@@ -13,6 +13,12 @@ const Settings = () => {
 						label='OpenAI Token'
 						value={openAiToken}
 						setValue={setOpenAiToken}
+					/>
+					<ControlledInput
+						type='text'
+						label='Model'
+						value={model}
+						setValue={setModel}
 					/>
 				</div>
 			}

@@ -9,5 +9,6 @@ export enum AppViews {
 	Home,
 	Chat,
 	Roster,
+	Encounter,
 	Settings,
 }

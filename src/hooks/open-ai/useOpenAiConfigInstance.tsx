@@ -2,7 +2,7 @@ import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
 import { useAppState } from './useAppState/useAppState'
 
 const useOpenAi = () => {
-	const { openAiToken } = useAppState()
+	const { openAiToken, model } = useAppState()
 	const configuration = new Configuration({
 		apiKey: openAiToken,
 	})
@@ -23,7 +23,7 @@ const useOpenAi = () => {
 					role: 'user',
 				},
 			],
-			model: 'gpt-3.5-turbo',
+			model,
 		})
 
 	return { getChatCompletion }

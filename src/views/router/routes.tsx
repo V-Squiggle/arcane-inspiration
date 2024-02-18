@@ -1,6 +1,6 @@
 import { AppViews, View } from './router.types'
 import { FaCog, FaComment, FaHome } from 'react-icons/fa'
-import { GiWizardFace } from 'react-icons/gi'
+import { GiGoblinHead, GiWizardFace } from 'react-icons/gi'
 
 /* eslint-disable sort-keys */
 export const appRoutes: Record<AppViews, View> = {
@@ -15,6 +15,10 @@ export const appRoutes: Record<AppViews, View> = {
 	[AppViews.Chat]: {
 		icon: FaComment,
 		viewName: 'Chat',
+	},
+	[AppViews.Encounter]: {
+		icon: GiGoblinHead,
+		viewName: 'Encounter',
 	},
 	[AppViews.Settings]: {
 		icon: FaCog,
