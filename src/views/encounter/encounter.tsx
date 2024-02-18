@@ -2,12 +2,11 @@ import { useState } from 'react'
 import { stats } from '../../hooks/open-ai/useCreateCombatant/monsterStats'
 import { StatPreview } from './stat-preview'
 import { ScrollableWindow, StyledTextarea } from '@/components'
-import { useCreateCombatant } from '@/hooks/open-ai/useCreateCombatant/useCreateCombatant'
-
-import styles from './encounter.module.scss'
+import { useCreateCombatant } from '@/hooks/open-ai'
 import { Monster } from './monster'
 import { StatusCode } from '@/types'
-import MainWrapper from '@/components/default-main-wrapper/main-wrapper'
+
+import styles from './encounter.module.scss'
 
 const crOptions = Object.keys(stats).sort(
 	(a, b) => parseFloat(a) - parseFloat(b),

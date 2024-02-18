@@ -1,11 +1,11 @@
-import { AppStateProvider } from '@/hooks'
 import Router from './views/router/router'
+import { Provider } from 'jotai'
 
 function App() {
 	return (
-		<AppStateProvider>
+		<Provider>
 			<Router />
-		</AppStateProvider>
+		</Provider>
 	)
 }
 

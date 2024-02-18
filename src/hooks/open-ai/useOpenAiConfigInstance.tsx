@@ -1,10 +1,13 @@
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai'
-import { useAppState } from '@/hooks'
+import { useAtomValue } from 'jotai'
+import { openAiApiKeyAtom, openAiModelAtom } from '@/store/settings.store'
 
 const useOpenAi = () => {
-	const { openAiToken, model } = useAppState()
+	const model = useAtomValue(openAiModelAtom)
+	const openAiApiKey = useAtomValue(openAiApiKeyAtom)
+
 	const configuration = new Configuration({
-		apiKey: openAiToken,
+		apiKey: openAiApiKey,
 	})
 	delete configuration.baseOptions.headers['User-Agent']
 
