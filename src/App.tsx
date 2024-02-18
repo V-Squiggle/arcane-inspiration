@@ -1,4 +1,4 @@
-import { AppStateProvider } from './hooks/open-ai/useAppState/appStateProvider'
+import { AppStateProvider } from '@/hooks'
 import Router from './views/router/router'
 
 function App() {

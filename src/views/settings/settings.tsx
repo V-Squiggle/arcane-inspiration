@@ -1,5 +1,5 @@
 import { ControlledInput } from '@/components'
-import { useAppState } from '@/hooks/open-ai/useAppState/useAppState'
+import { useAppState } from '@/hooks'
 const Settings = () => {
 	const { openAiToken, setOpenAiToken, model, setModel } = useAppState()
 
