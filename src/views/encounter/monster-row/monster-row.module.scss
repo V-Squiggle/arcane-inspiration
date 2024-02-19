@@ -1,0 +1,48 @@
+@import '../../../styles/globals.scss';
+
+.monster {
+	border: 1px solid;
+	border-color: $border-color;
+	border-radius: 1rem;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	padding-left: 1rem;
+
+	cursor: pointer;
+}
+
+.monster.selected {
+	border-color: $highlight-color;
+}
+
+.overhead {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+$button-size: 0.75rem;
+.button-wrapper {
+	width: $button-size;
+	height: $button-size;
+	border-radius: 50%;
+
+	border: 1px solid;
+	margin-left: 0.25rem;
+	padding: 4px;
+
+	&.decrement {
+		border-color: $red;
+	}
+
+	&.increment {
+		border-color: $green;
+	}
+}
+
+.counter-container {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	margin: 0.25rem 0;
+}

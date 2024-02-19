@@ -1,6 +1,7 @@
 import {
 	encounterMonstersAtom,
 	encounterPartyAtom,
+	selectedMonsterIndexAtom,
 } from '@/store/encounter.store'
 import { Monster, MonsterResponse } from '@/types'
 import { useAtom } from 'jotai'
@@ -10,6 +11,9 @@ export const useEncounterService = () => {
 	const { generateNewMonster } = useCreateCombatant()
 	const [party, setParty] = useAtom(encounterPartyAtom)
 	const [monsters, setMonsters] = useAtom(encounterMonstersAtom)
+	const [selectedMonsterIndex, setSelectedMonsterIndex] = useAtom(
+		selectedMonsterIndexAtom,
+	)
 
 	const addPlayerCharacter = () =>
 		setParty((prev) => ({
@@ -97,5 +101,8 @@ export const useEncounterService = () => {
 		removeMonster,
 		updateMonster,
 		updateMonsterCount,
+
+		selectedMonsterIndex,
+		setSelectedMonsterIndex,
 	}
 }

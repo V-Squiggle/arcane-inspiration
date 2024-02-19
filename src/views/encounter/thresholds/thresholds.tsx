@@ -20,12 +20,11 @@ export const Thresholds = ({ monsters, party }: ThresholdsProps) => {
 	)
 
 	return (
-		<>
-			<div>Monster Difficulty:</div>
-			<div> {monsterXp} xp</div>
-			<br />
-			<div>Party Capabilities:</div>
-			<div className={styles['container']}>
+		<div className={styles['container-outer']}>
+			<p className={styles['label']}>Monster Difficulty:</p>
+			<p className={styles['value']}> {monsterXp} xp</p>
+			<p className={styles['label']}>Party Capabilities:</p>
+			<div className={styles['container-inner']}>
 				<ThresholdInfo
 					label='Easy'
 					threshold={currentThreshold.easy}
@@ -47,8 +46,7 @@ export const Thresholds = ({ monsters, party }: ThresholdsProps) => {
 					isHighlighted={highlightedThreshold === 'Deadly'}
 				/>
 			</div>
-			<br />
-		</>
+		</div>
 	)
 }
 

@@ -9,6 +9,7 @@ type Props = {
 	isSubmit?: boolean
 	onClick?: () => void
 	backgroundColor?: 'primary' | 'secondary' | 'tertiary' | 'transparent'
+	isUnpadded?: boolean
 }
 
 const IconButton = ({
@@ -17,6 +18,7 @@ const IconButton = ({
 	isSubmit,
 	onClick,
 	backgroundColor,
+	isUnpadded = false,
 }: Props) => {
 	const className = classNames(styles['wrapper'], {
 		[styles['highlighted']]: isActive,
@@ -28,7 +30,12 @@ const IconButton = ({
 	const buttonType = isSubmit ? 'submit' : 'button'
 
 	return (
-		<button className={className} onClick={onClick} type={buttonType}>
+		<button
+			className={className}
+			onClick={onClick}
+			type={buttonType}
+			style={isUnpadded ? { padding: '0px' } : undefined}
+		>
 			<Icon width={'100%'} height={'100%'} />
 		</button>
 	)
