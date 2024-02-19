@@ -1,0 +1,23 @@
+@import '../../../styles/globals.scss';
+
+.wrapper {
+	padding: 1rem;
+	background-color: $tertiary-color;
+	min-width: 13rem;
+}
+
+.monster {
+	border: 1px solid;
+	border-color: $border-color;
+	border-radius: 1rem;
+	padding-left: 1rem;
+}
+
+.monster.selected {
+	border-color: $highlight-color;
+}
+
+.remove-button {
+	width: 1.5rem;
+	margin-left: 0.25rem;
+}

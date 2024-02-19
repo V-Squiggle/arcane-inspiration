@@ -1,0 +1,32 @@
+@import '../../../styles/globals.scss';
+
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.threshold {
+	&-container {
+		display: flex;
+		flex-direction: column;
+		margin-right: 0.5rem;
+	}
+	&-amount {
+		font-size: 1rem;
+		margin: 0px;
+		text-align: center;
+		color: $dimmed-text-color;
+	}
+	&-label {
+		font-size: 1rem;
+		margin: 0px;
+		text-align: center;
+		color: $dimmed-text-color;
+	}
+}
+
+.highlighted {
+	> p {
+		color: $text-color;
+	}
+}

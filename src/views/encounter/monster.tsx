@@ -2,49 +2,39 @@ import { MonsterResponse } from '@/types/monster'
 import React from 'react'
 
 type MonsterProps = {
-	monster: string
+	monster: MonsterResponse
 }
 
 export const Monster = ({ monster }: MonsterProps) => {
-	const { type, value } = tryParseMonster(monster)
-	if (type === 'string') {
-		return (
-			<>
-				<div>Parsing failed:</div>
-				<div>{value}</div>
-			</>
-		)
-	}
-
 	return (
 		<div>
-			<h2 style={{ marginBottom: '0px' }}>{value.name}</h2>
-			{value.type} <em>{value.alignment}</em>
+			<h2 style={{ marginBottom: '0px' }}>{monster.name}</h2>
+			{monster.type} <em>{monster.alignment}</em>
 			<br />
 			<br />
 			<div>
 				<strong>Armor Class: </strong>
-				{value.ac} {value.armorName && `(${value.armorName})`}
+				{monster.ac} {monster.armorName && `(${monster.armorName})`}
 			</div>
 			<div>
 				<strong>Hit Points: </strong>
-				{value.hp}
+				{monster.hp}
 			</div>
 			<div>
 				<strong>Speed: </strong>
-				{value.speed}
+				{monster.speed}
 			</div>
 			<br />
-			<SkillDisplay name='Strength' amount={value.str} />
-			<SkillDisplay name='Dexterity' amount={value.dex} />
-			<SkillDisplay name='Constitution' amount={value.con} />
-			<SkillDisplay name='Intelligence' amount={value.int} />
-			<SkillDisplay name='Wisdom' amount={value.wis} />
-			<SkillDisplay name='Charisma' amount={value.cha} />
+			<SkillDisplay name='Strength' amount={monster.str} />
+			<SkillDisplay name='Dexterity' amount={monster.dex} />
+			<SkillDisplay name='Constitution' amount={monster.con} />
+			<SkillDisplay name='Intelligence' amount={monster.int} />
+			<SkillDisplay name='Wisdom' amount={monster.wis} />
+			<SkillDisplay name='Charisma' amount={monster.cha} />
 			<br />
 			<strong>Skills</strong>
 			<ul>
-				{value.skills?.map((skill, i) => (
+				{monster.skills?.map((skill, i) => (
 					<div key={i}>
 						<li>
 							<strong>{skill.name}:</strong> {skill.mod > 0 ? '+' : ''}
@@ -56,24 +46,24 @@ export const Monster = ({ monster }: MonsterProps) => {
 			<div>
 				<strong>Senses: </strong>
 				<ul>
-					{value.senses.map((sense, i) => (
+					{monster.senses.map((sense, i) => (
 						<li key={i}>{sense}</li>
 					))}
 				</ul>
 			</div>
 			<div>
 				<strong>Languages: </strong>
-				{value.languages.map((language, i) => (
+				{monster.languages.map((language, i) => (
 					<span key={i}>{language} </span>
 				))}
 			</div>
 			<div>
 				<strong>Challenge: </strong>
-				{value.challenge}
+				{monster.challenge}
 			</div>
 			<strong>Traits</strong>
 			<ul>
-				{value.traits?.map((trait, i) => (
+				{monster.traits?.map((trait, i) => (
 					<div key={i}>
 						<li>
 							<strong>{trait.name}:</strong> {trait.description}
@@ -83,7 +73,7 @@ export const Monster = ({ monster }: MonsterProps) => {
 			</ul>
 			<strong>Actions</strong>
 			<ul>
-				{value.actions?.map((action, i) => (
+				{monster.actions?.map((action, i) => (
 					<div key={i}>
 						<li>
 							<strong>{action.name}:</strong> {action.description}
@@ -109,17 +99,3 @@ const SkillDisplay = ({ name, amount }: SkillDisplayProps) => (
 
 const getSkillModPrefix = (amount: number) => (amount > 11 ? '+' : '')
 const getSkillMod = (amount: number) => (amount - 10) / 2
-
-const tryParseMonster = (
-	monster: string,
-):
-	| { type: 'string'; value: string }
-	| { type: 'parsed'; value: MonsterResponse } => {
-	try {
-		const parsed = JSON.parse(monster) as MonsterResponse
-
-		return { type: 'parsed', value: parsed }
-	} catch (e) {
-		return { type: 'string', value: monster }
-	}
-}
