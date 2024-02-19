@@ -15,7 +15,9 @@ export const createMonsterSystemPrompt = (): ChatCompletionRequestMessage => {
         Damage: The average damage per turn for the monster (if the monster was to land all of it's possible attacks). You are allowed to increase or decrease the provided value by up to 50% based on the concept. This is the damage budget for all the monster's attacks. Limited-use (daily, recharge, or situational) attacks do 4x the damage budgeted. Multi-target attacks do ½ the damage budgeted. Limited-use multi-target attacks do 2x. All other damage sources are 1 for 1, including at-will and legendary single-target attacks, auras, reactions, and variable-length effects like Swallow. If a monster has several at-will options (such as melee and ranged), the lower-damage options are free.
         DC: The Difficulty Class of the monster's abilities. +-2 based on the concept.
         Save: The bonus to those saving throws that the monster would naturally be good at (for instance, Strength and Constitution for a bruiser, Intelligence for a wizard). This number also works for the bonus to a monster’s trained skills. Bad saving throws/untrained skills may be any value less than this. +-2 based on concept.
-        Details: Add traits, resistances, immunities, vulnerabilities, non-damaging status effects, and other details based on monster concept. These don't affect the CR.`
+        Details: Add traits, resistances, immunities, vulnerabilities, non-damaging status effects, and other details based on monster concept. These don't affect the CR.
+        
+        IMPORTANT: This JSON object will be parsed directly, so please ensure it is formatted correctly and that there are no comments.`
 
 	return {
 		content: message,

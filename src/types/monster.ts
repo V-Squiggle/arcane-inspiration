@@ -1,3 +1,5 @@
+import { Monster } from '@/views/encounter/monster'
+
 export type MonsterResponse = {
 	name: string
 	type: string
@@ -25,3 +27,21 @@ type MonsterSkill = { name: string; mod: number }
 type MonsterTraits = { name: string; description: string }
 
 type MonsterAction = { name: string; description: string }
+
+export type Monster = MonsterPreGeneration | MonsterGenerated
+
+type MonsterPreGeneration = {
+	status: 'PRE_GENERATION' | 'GENERATING' | 'GENERATION_FAILED'
+} & MonsterBase
+
+type MonsterGenerated = {
+	status: 'GENERATED'
+} & MonsterResponse &
+	MonsterBase
+
+type MonsterBase = {
+	name: string
+	count: number
+	challengeRating: string
+	prompt: string
+}

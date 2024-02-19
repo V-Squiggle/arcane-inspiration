@@ -5,7 +5,6 @@ import {
 	createMonsterPrompt,
 	createMonsterSystemPrompt,
 } from './useCreateCombatant.utils'
-import useControlledPromise from '@/hooks/useControlledPromise'
 
 export const useCreateCombatant = () => {
 	const { getChatCompletion } = useOpenAi()
@@ -13,7 +12,7 @@ export const useCreateCombatant = () => {
 	const generateNewMonster = async (
 		description: string,
 		challengeRating: string,
-	): Promise<string | null> =>
+	): Promise<string> =>
 		await getChatCompletion(
 			[
 				createMonsterSystemPrompt(),
@@ -21,19 +20,11 @@ export const useCreateCombatant = () => {
 				createExampleResponse(),
 			],
 			createMonsterPrompt(description, challengeRating),
-		)
-			.then((response) => {
-				return response.data.choices[0].message?.content ?? null
-			})
-			.catch((error) => {
-				console.error(error)
+		).then((response) => {
+			return response.data.choices[0].message?.content ?? ''
+		})
 
-				return null
-			})
-
-	return useControlledPromise(
-		(description: string, challengeRating: string) =>
-			generateNewMonster(description, challengeRating),
-		false,
-	)
+	return {
+		generateNewMonster,
+	}
 }
