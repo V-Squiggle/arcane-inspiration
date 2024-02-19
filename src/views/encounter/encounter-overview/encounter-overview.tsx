@@ -4,69 +4,42 @@ import {
 	PlayerCharacterRow,
 } from '../player-character/player-character'
 import { Thresholds } from '../thresholds/thresholds'
+import { MonsterRow } from '../monster-row/monster-row'
 
 import styles from './encounter-overview.module.scss'
-import { IconButton } from '@/components'
-import { FaTrash, FaTrashAlt } from 'react-icons/fa'
+import { IconButton, ScrollableWindow } from '@/components'
+import { FaPlus } from 'react-icons/fa'
 
-type EncounterOverviewProps = {
-	selectedMonsterIndex: number
-	setSelectedMonsterIndex: React.Dispatch<React.SetStateAction<number>>
-}
-
-export const EncounterOverview = ({
-	selectedMonsterIndex,
-	setSelectedMonsterIndex,
-}: EncounterOverviewProps) => {
-	const {
-		party,
-		addPlayerCharacter,
-		addMonster,
-		monsters,
-		removeMonster,
-		updateMonsterCount,
-	} = useEncounterService()
+export const EncounterOverview = () => {
+	const { party, addPlayerCharacter, addMonster, monsters } =
+		useEncounterService()
 
 	return (
-		<div className={styles['wrapper']}>
-			<Thresholds party={party} monsters={monsters} />
-			<div>
-				<button onClick={addPlayerCharacter}>Add Player Character</button>
-			</div>
-			<div>
-				<PlayerCharacterHeaderRow />
-				{party.playerCharacters.map((pc, i) => (
-					<PlayerCharacterRow key={i} index={i} PlayerCharacter={pc} />
-				))}
-			</div>
-			<div>
-				<button onClick={addMonster}>Add Monster</button>
-			</div>
-			<div>
-				{monsters.map((monster, i) => (
-					<div key={i}>
-						<button onClick={() => updateMonsterCount(i, 'DECREMENT')}>
-							-
-						</button>
-						<span> {monster.count}x </span>
-						<button onClick={() => updateMonsterCount(i, 'INCREMENT')}>
-							+
-						</button>
-						<div className={styles['remove-button']}>
-							<IconButton onClick={() => removeMonster(i)} icon={FaTrashAlt} />
-						</div>
-						<div
-							key={i}
-							className={`${styles['monster']} ${
-								i === selectedMonsterIndex ? styles['selected'] : ''
-							}`}
-							onClick={() => setSelectedMonsterIndex(i)}
-						>
-							{monster.name}
-						</div>
+		<div className={styles['wrapper-outer']}>
+			<ScrollableWindow id='EncounterWindow'>
+				<div className={styles['wrapper-inner']}>
+					<Thresholds party={party} monsters={monsters} />
+					<div className={styles['flex']}>
+						<p>Players</p>
+						<IconButton icon={FaPlus} onClick={addPlayerCharacter} />
 					</div>
-				))}
-			</div>
+					<div>
+						<PlayerCharacterHeaderRow />
+						{party.playerCharacters.map((pc, i) => (
+							<PlayerCharacterRow key={i} index={i} PlayerCharacter={pc} />
+						))}
+					</div>
+					<div className={styles['flex']}>
+						<p>Monsters</p>
+						<IconButton icon={FaPlus} onClick={addMonster} />
+					</div>
+					<div>
+						{monsters.map((monster, i) => (
+							<MonsterRow key={i} index={i} monster={monster} />
+						))}
+					</div>
+				</div>
+			</ScrollableWindow>
 		</div>
 	)
 }

@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import { stats } from '@/hooks/open-ai/useCreateCombatant/monsterStats'
 import { StatPreview } from '../stat-preview'
 import { ScrollableWindow, StyledTextarea } from '@/components'
-import { useCreateCombatant } from '@/hooks/open-ai'
 import { Monster } from '../monster'
-import { StatusCode } from '@/types'
 
 import styles from './selected-monster.module.scss'
 import { useEncounterService } from '@/hooks'
@@ -19,12 +16,13 @@ const parseCr = (cr: string) => {
 }
 const crOptions = Object.keys(stats).sort((a, b) => parseCr(a) - parseCr(b))
 
-type SelectedMonsterProps = {
-	index: number
-}
-
-export const SelectedMonster = ({ index }: SelectedMonsterProps) => {
-	const { generateMonster, monsters, updateMonster } = useEncounterService()
+export const SelectedMonster = () => {
+	const {
+		generateMonster,
+		monsters,
+		updateMonster,
+		selectedMonsterIndex: index,
+	} = useEncounterService()
 
 	const selectedMonster = index > -1 ? monsters[index] : null
 	if (!selectedMonster) return null

@@ -1,23 +1,27 @@
 @import '../../../styles/globals.scss';
 
 .wrapper {
-	padding: 1rem;
-	background-color: $tertiary-color;
-	min-width: 13rem;
+	&-outer {
+		background-color: $tertiary-color;
+		min-width: 14rem;
+	}
+	&-inner {
+		padding: 0 0.5rem 0 0.25rem;
+	}
 }
 
-.monster {
-	border: 1px solid;
-	border-color: $border-color;
-	border-radius: 1rem;
-	padding-left: 1rem;
-}
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-.monster.selected {
-	border-color: $highlight-color;
-}
-
-.remove-button {
-	width: 1.5rem;
-	margin-left: 0.25rem;
+	& > p {
+		margin: 0;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	& > button {
+		height: 2rem;
+		width: 2rem;
+	}
 }

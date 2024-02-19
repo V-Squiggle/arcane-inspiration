@@ -1,8 +1,26 @@
 @import '../../../styles/globals.scss';
 
 .container {
-	display: flex;
-	justify-content: space-between;
+	&-outer {
+		& > .label {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: bold;
+		}
+		& > .value {
+			margin: 0;
+			font-size: 1rem;
+			margin-bottom: 0.75rem;
+		}
+
+		border-bottom: 2px solid;
+		margin-bottom: 0.5rem;
+	}
+	&-inner {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.5rem;
+	}
 }
 
 .threshold {
